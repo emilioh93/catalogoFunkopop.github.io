@@ -18,7 +18,7 @@
             <section class="container">
                 <div class="container-fluid d-flex align-items-center">
                     <a class="navbar-brand" href="#">Funkopop</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,36 +38,93 @@
             </section>
         </nav>
     </header>
-    <main>
-        <img src="img/batmanAdmin.png" alt="">
-        <section class="container">
-            <h1 class="display-3">Administrar productos</h1>
-            <hr>
+    <main class="container mt-5">
+        <section class="row">
+            <div class="col-10">
+                <h1 class="display-3">Administrar productos</h1>
+            </div>
+            <div class="col-2">
+                <img src="img/batmanAdmin.jpg" alt="imagen cabeza de Batman" class="w-100">
+            </div>
+        </section>
+        <hr>
+        <section>
             <div class="d-flex my-5">
                 <h3>Tabla de productos</h3>
-                <button class="btn btn-outline-primary ms-auto">Agregar</button>
+                <button class="btn btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#modalFunkopop">Agregar</button>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Número de serie</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Número de serie</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla Funkopop">
+                        <td>1</td>
+                        <td>Batman</td>
+                        <td>Njas41a</td>
+                        <td>DC</td>
+                        <td>Superhéroe</td>
+                        <td>no disponible</td>
+                        <td><button class="btn btn-warning">Editar</button><button class="btn btn-danger">Borrar</button></td>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+    <!-- MODAL DE FUNKOPOP-->
+    <div class="modal fade" id="modalFunkopop" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Agregar Funkopop</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formFunkopop" onsubmit="agregarFunkopop(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Código</label>
+                            <input type="text" class="form-control" id="codigo" placeholder="Ingrese un código">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Batman">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Número de serie</label>
+                            <input type="text" class="form-control" id="numSerie" placeholder="DCX123">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+                            <input type="text" class="form-control" id="categoria" placeholder="DC">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea id="description" class="form-control" cols="30" placeholder="Información del producto"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Imagen</label>
+                            <input type="text" class="form-control" id="imagen" placeholder="Agregar una imagen">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="bg-dark py-3 text-light text-center mt-5">
         Todos los derechos reservados
     </footer>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="module" src="js/admin.js"></script>
 </body>
 
 </html>
