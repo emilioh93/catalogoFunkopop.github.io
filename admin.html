@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/2ec4b6d9c2.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
     <title>Catálogo Funkopop</title>
 </head>
 
@@ -51,7 +52,7 @@
         <section>
             <div class="d-flex my-5">
                 <h3>Tabla de productos</h3>
-                <button class="btn btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#modalFunkopop">Agregar</button>
+                <button class="btn btn-outline-primary ms-auto" id="btnAgregar">Agregar</button>
             </div>
             <div class="table-responsive">
                 <table class="table">
@@ -66,14 +67,19 @@
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <tbody id="tabla Funkopop">
-                        <td>1</td>
-                        <td>Batman</td>
-                        <td>Njas41a</td>
-                        <td>DC</td>
-                        <td>Superhéroe</td>
-                        <td>no disponible</td>
-                        <td><button class="btn btn-warning">Editar</button><button class="btn btn-danger">Borrar</button></td>
+                    <tbody id="tablaFunkopop">
+                        <tr>
+                            <td>1</td>
+                            <td>Batman</td>
+                            <td>Njas41a</td>
+                            <td>DC</td>
+                            <td>Superhéroe</td>
+                            <td>no disponible</td>
+                            <td>
+                                <button class="btn btn-warning">Editar</button>
+                                <button class="btn btn-danger">Borrar</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -130,8 +136,8 @@
     </footer>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="module" src="js/admin.js"></script>
     <script src="js/validaciones.js"></script>
+    <script type="module" src="js/admin.js"></script>
 </body>
 
 </html>
