@@ -1,5 +1,3 @@
-// TODO: programar funcion validarGeneral, para no estar ando e importando función por función
-
 function validarCodigo(codigo) {
     console.log("Se ejecutó onblur de código");
     if (codigo.value.trim() === "") {
@@ -66,20 +64,17 @@ function validarImagen(imagen) {
     }
 }
 
-// function validarGeneral() {
-//     console.log("desde validar gral");
-//     if (validarCodigo(document.getElementById("codigo")) &&
-//         validarNombre(document.getElementById("nombre")) &&
-//         validarSerie(document.getElementById("numSerie")) &&
-//         validarCategoria(document.getElementById("categoria")) &&
-//         validarDescripcion(document.getElementById("descripcion")) &&
-//         validarImagen(document.getElementById("imagen"))) {
-//         return true;
+// FUNCIÓN VALIDAR GENERAL
 
-//     } else {
-//         document.getElementById("alert").className = "alert alert-danger text-center";
-//         document.getElementById("alert").innerHTML = "Debe corregir los datos cargados";
-//         // alert("Debe corregir los datos cargados");
-//         return false;
-//     }
-// }
+export function validarGeneral() {
+    console.log("desde validar gral");
+    if (validarCodigo(document.getElementById("codigo")) &&
+        validarNombre(document.getElementById("nombre")) &&
+        validarSerie(document.getElementById("numSerie")) &&
+        validarCategoria(document.getElementById("categoria")) &&
+        validarDescripcion(document.getElementById("descripcion")) &&
+        validarImagen(document.getElementById("imagen"))) {
+
+        return true;
+    }
+}
