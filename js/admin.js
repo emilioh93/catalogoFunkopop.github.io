@@ -8,6 +8,11 @@ btnAgregar.addEventListener("click", function() {
     modalProducto.show();
 });
 
+// Variable bandera, la cual me ayuda a decidir cuando tengo que modificar y cuando crear Funkopop
+// modificarFunkopop = true; estoy modificando un Funkopop
+// modificarFunkopop = false; estoy agregando un Funkopop
+let modificarFunkopop = false;
+
 // Llamo a la función que lee datos del local storage
 leerDatos();
 
@@ -75,7 +80,7 @@ function dibujarDatosEnTabla(_listaFunkopop) {
     let filas;
 
     // for (let i = 0; i < _listaFunkopop.length; i++) {}
-    // Recorro todo el arreglo con un for in
+    // Recorro todo el arreglo con un "for in"
     for (let i in _listaFunkopop) {
         filas = `<tr>
             <td>${_listaFunkopop[i].codigo}</td>
@@ -85,8 +90,8 @@ function dibujarDatosEnTabla(_listaFunkopop) {
             <td>${_listaFunkopop[i].descripcion}</td>
             <td>${_listaFunkopop[i].imagen}</td>
             <td>
-                <button class="btn btn-warning">Editar</button>
-                <button class="btn btn-danger" onclick="eliminarFunkopop(this)">Borrar</button>
+                <button class="btn btn-warning" onclick="prepararFunkopop(this)" id="${_listaFunkopop[i].codigo}">Editar</button>
+                <button class="btn btn-danger" onclick="eliminarFunkopop(this)" id="${_listaFunkopop[i].codigo}">Borrar</button>
             </td>
         </tr>`;
         // Agrego la fila al padre
@@ -95,6 +100,54 @@ function dibujarDatosEnTabla(_listaFunkopop) {
 }
 
 window.eliminarFunkopop = function(boton) {
-    console.log("Dentro de la función Funkopop");
+    console.log(boton.id);
+    Swal.fire({
+        title: '¿Está seguro que desea eliminar el Funkopop?',
+        text: "Al eliminarlo, no podrás recuperarlo.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#666',
+        confirmButtonText: '¡Eliminar!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Agrego lógica para eliminar Funkopop
+            // let funkopopFiltrado = listaFunkopop.filter(function(producto) {
+            //     return producto.codigo != boton.id
+            // });
+            let funkopopFiltrado = listaFunkopop.filter((producto) => producto.codigo != boton.id);
 
+            listaFunkopop = funkopopFiltrado;
+
+            console.log(funkopopFiltrado);
+            // Guardo datos en LS
+            localStorage.setItem("listaFunkoKey", JSON.stringify(funkopopFiltrado));
+            // Cargar los nuevos datos
+            leerDatos();
+
+            Swal.fire(
+                '¡Eliminado!',
+                'Su Funkopop ha sido eliminado.',
+                'success'
+            )
+        }
+    })
+}
+
+window.prepararFunkopop = function(boton) {
+    console.log(boton);
+    // Busco el Funkopop seleccionado
+    let funkopopEncontrado = listaFunkopop.find((producto) => { return producto.codigo === boton.id });
+
+    console.log(funkopopEncontrado);
+    // Completo con los datos, todos los inputs de mi formulario
+    document.getElementById("codigo").value = funkopopEncontrado.codigo;
+    document.getElementById("nombre").value = funkopopEncontrado.nombre;
+    document.getElementById("numSerie").value = funkopopEncontrado.numSerie;
+    document.getElementById("categoria").value = funkopopEncontrado.categoria;
+    document.getElementById("descripcion").value = funkopopEncontrado.descripcion;
+    document.getElementById("imagen").value = funkopopEncontrado.imagen;
+    // Muestro ventana modal
+    modalProducto.show();
 }
