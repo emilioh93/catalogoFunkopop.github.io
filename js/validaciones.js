@@ -1,4 +1,4 @@
-function validarCodigo(codigo) {
+export function validarCodigo(codigo) {
     console.log("Se ejecutó onblur de código");
     if (codigo.value.trim() === "") {
         codigo.className = "form-control is-invalid";
@@ -9,7 +9,7 @@ function validarCodigo(codigo) {
     }
 }
 
-function validarNombre(nombre) {
+export function validarNombre(nombre) {
     console.log("Se ejecutó onblur de nombre");
     if (nombre.value.trim() === "") {
         nombre.className = "form-control is-invalid";
@@ -20,7 +20,7 @@ function validarNombre(nombre) {
     }
 }
 
-function validarSerie(serie) {
+export function validarSerie(serie) {
     console.log("Se ejecutó onblur de numero de serie");
     if (serie.value.trim() === "") {
         serie.className = "form-control is-invalid";
@@ -31,7 +31,7 @@ function validarSerie(serie) {
     }
 }
 
-function validarCategoria(categoria) {
+export function validarCategoria(categoria) {
     console.log("Se ejecutó onblur de categoria");
     if (categoria.value.trim() === "") {
         categoria.className = "form-control is-invalid";
@@ -42,7 +42,7 @@ function validarCategoria(categoria) {
     }
 }
 
-function validarDescripcion(descripcion) {
+export function validarDescripcion(descripcion) {
     console.log("Se ejecutó onblur de descripcion");
     if (descripcion.value.trim() === "") {
         descripcion.className = "form-control is-invalid";
@@ -53,7 +53,7 @@ function validarDescripcion(descripcion) {
     }
 }
 
-function validarImagen(imagen) {
+export function validarImagen(imagen) {
     console.log("Se ejecutó onblur de imagen");
     if (imagen.value.trim() === "") {
         imagen.className = "form-control is-invalid";
