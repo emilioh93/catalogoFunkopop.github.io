@@ -11,9 +11,19 @@ function leerFunkopop() {
 
         // Dibujo cada columna con los datos de los Funkopop
         for (let i in listaFunkopop) {
+            // Cargo img por defecto
+            let imagen = "";
+            if (listaFunkopop[i].imagen === "") {
+                // Cargo img por defecto
+                imagen = "pordefecto.png";
+            } else {
+                // Uso img cargada por el user
+                imagen = listaFunkopop[i].imagen;
+            }
+
             let columna = `<div class="col-md-3 col-sm-6 my-2">
             <div class="card w-100 shadow">
-                <img src="img/productos/${listaFunkopop[i].imagen}" class="card-img-top" alt="imagen de Funkopop">
+                <img src="img/productos/${imagen}" class="card-img-top" alt="imagen de Funkopop">
                 <div class="card-body">
                     <h5 class="card-title">${listaFunkopop[i].nombre}</h5>
                     <p class="card-text">${listaFunkopop[i].descripcion}</p>
